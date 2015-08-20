@@ -1,0 +1,13 @@
+{
+  "name": "eMag",
+  "dependencies": {
+    "angular": "1.4.4",
+    "ui-router": "0.*",
+    "ngDialog": "0.*",
+    "angular-animate": "1.*",
+    "angular-touch": "~1.4.4"
+  },
+  "resolutions": {
+    "angular": "1.4.4"
+  }
+}
