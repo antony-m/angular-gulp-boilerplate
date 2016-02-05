@@ -17,10 +17,10 @@
     $.rev = require('gulp-rev');
 
     /**
-     * Concat, uglify files for prodctions
+     * Concat, uglify files for production
      */
     gulp.task('usemin', function() {
-        gulp.src('dev/index.html')
+        gulp.src('src/index.html')
             .pipe($.usemin({
                 css: [$.minifyCss(), 'concat', $.rev()],
                 html: [$.minifyHtml({empty: true})],

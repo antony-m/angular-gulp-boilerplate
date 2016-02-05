@@ -2,52 +2,48 @@
     'use strict';
 
     module.exports = {
-        'browsers': [
-            'ie >= 10',
-            'ie_mob >= 10',
-            'ff >= 30',
-            'chrome >= 34',
-            'safari >= 7',
-            'opera >= 23',
-            'ios >= 7',
-            'android >= 4.4',
-            'bb >= 10'
-        ],
         'paths': {
             'app': {
-                'src': 'dev/app/**/*.*'
+                'src': 'src/app/**/*.*'
             },
             'html': {
                 'src': [
-                    'dev/index.html',
-                    'dev/app/**/*.tpl.html'
+                    'src/index.html',
+                    'src/app/**/*.tpl.html'
                 ]
             },
             'styles': {
-                'src': 'dev/assets/styles/scss/**/*.scss',
-                'main': 'dev/assets/styles/scss/app.scss',
-                'dest': 'dev/assets/styles/css/'
+                'src': 'src/assets/styles/scss/**/*.scss',
+                'main': 'src/assets/styles/scss/app.scss',
+                'dest': 'src/assets/styles/css/'
             },
             'scripts': {
                 'src': [
-                    'dev/app/**/*.js',
-                    'dev/assets/scripts/**/*.js'
+                    'src/app/**/*.js',
+                    'src/assets/scripts/**/*.js',
+                    'src/assets/locales/**/*.js'
                 ]
             },
             'images': {
-                'src': 'dev/assets/images/**/*',
-                'dest': 'dev/assets/images'
+                'src': 'src/assets/images/**/*',
+                'dest': 'src/assets/images'
             },
             'symbols': {
-                'src': 'dev/assets/symbols/**/*',
-                'dest': 'dev/assets/fonts'
+                'src': 'src/assets/symbols/**/*',
+                'dest': 'src/assets/fonts'
             }
         },
         'injectOrder': {
             'js': [
                 '**/app.js',
-                '**/*.js',
+                'modules/**/*.js',
+                'components/**/*.js',
+                '**/*.js'
             ]
+        },
+        'locales': {
+            'dest': 'src/assets/locales/',
+            'src': 'src/assets/locales/**/*.po'
         }
     };
 

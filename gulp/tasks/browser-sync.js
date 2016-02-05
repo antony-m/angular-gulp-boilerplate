@@ -6,10 +6,12 @@
      */
     var gulp = require('gulp');
     var browserSync = require('browser-sync');
-    var historyApiFallback = require('connect-history-api-fallback');
     var runSequence = require('run-sequence');
     var config = require('../config.js');
+    var url = require('url');
     var $ = {};
+
+
 
     /**
      * Plugins
@@ -28,15 +30,26 @@
       * Watch Files For Changes & Reload
       */
     gulp.task('browser-sync', function() {
+
+        var DEFAULT_FILE = 'index.html';
+        var ASSET_EXTENSION_REGEX = new RegExp('\\b(?!\\?)\\.(js|css|png|jpe?g|gif|svg|eot|otf|ttc|ttf|woff2?)\\b(?!\\.)', 'i');
+
         browserSync({
             notify: true, // Show notification in the browser
             server: {
-                baseDir: './dev/',
-                middleware: [ historyApiFallback ]
+                baseDir: './src/'
             },
-            port: 5000,
+            middleware: function(req, res, next) {
+                var fileHref = url.parse(req.url).href;
+
+                if ( !ASSET_EXTENSION_REGEX.test(fileHref) ) {
+                    req.url = '/' + DEFAULT_FILE;
+                }
+                return next();
+            },
+            port: 4000,
             ui: {
-                port: 5001
+                port: 4001
             }
         });
 		

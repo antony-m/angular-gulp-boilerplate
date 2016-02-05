@@ -5,6 +5,7 @@
      * Basics
      */
     var gulp = require('gulp');
+    var browserSync = require('browser-sync');
     var $ = {};
 
     /**
@@ -17,18 +18,20 @@
      * Generate templates caches from html and minify them
      */
     gulp.task('generate-templates', function() {
+
         return gulp
-            .src('dev/app/**/*.tpl.html')
+            .src('src/app/**/*.tpl.html')
             .pipe($.minifyHtml({empty: true}))
             .pipe($.angularTemplatecache(
                 'templates.js',
                 {
                     'module': 'app',
                     'root': '/app/',
-                    'standAlone': false
+                    'standAlone': true
                 }
             ))
-            .pipe(gulp.dest('dev/app/'));
+            .pipe(gulp.dest('src/app/'))
+            .pipe(browserSync.stream());
     });
 
 })();

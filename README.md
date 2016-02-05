@@ -1,27 +1,32 @@
-# Emag pdf viewer
+# angular-gulp-boilerplate
 
 ## Usage
 
-Just after cloning the repo, you have to run:
+After cloning the repo:
 ```
 npm install && bower install
 ```
 
 ## Available Tasks
 
-Get the help by showing all gulp tasks declared
-```
-gulp help
-```
-
 Start the work environment
 ```
 gulp build
 ```
 
-Get the build
+Get the build for production
 ```
 gulp deploy
+```
+
+Run unit tests once
+```
+gulp test
+```
+
+Run unit tests and watch for changes
+```
+gulp tdd
 ```
 
 

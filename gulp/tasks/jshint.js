@@ -17,8 +17,9 @@
     /**
      * Do not lint the constants.js and templates.js
      */
-    config.paths.scripts.src.push('!dev/app/constants.js');
-    config.paths.scripts.src.push('!dev/app/templates.js');
+    config.paths.scripts.src.push('!src/app/constants.js');
+    config.paths.scripts.src.push('!src/app/templates.js');
+    config.paths.scripts.src.push('!src/assets/locales/**/*.js');
 
     /**
      * Lint javascript

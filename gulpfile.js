@@ -7,29 +7,12 @@
     var gulp = require('gulp');
     var requireDir = require('require-dir');
 	var runSequence = require('run-sequence');
-    var $ = {};
+    var Server = require('karma').Server;
 
     /**
-     * Get some configuration files
-     */
-    var config = require('./gulp/config.js');
-
-    /**
-     * Load all gulp taks
+     * Load all gulp tasks
      */
     var tasks = requireDir('./gulp/tasks', { recurse: true });
-
-    /**
-     * Task: 'default'
-     * List all available tasks
-     */
-    gulp.task('default', $.taskListing);
-
-    /**
-     * Task: 'help'
-     * List all available tasks
-     */
-    gulp.task('help', $.taskListing);
 
     /**
      * Task: 'gulp build'
@@ -39,6 +22,7 @@
             'styles',
 			'generate-templates',
             'inject-js',
+            'jshint',
             ['browser-sync']
         );
     });
@@ -47,13 +31,35 @@
      * Task: 'gulp deploy'
      */
     gulp.task('deploy', ['clean'], function() {
+        runSequence(
+            'styles',
+            'generate-templates',
+            'inject-js',
+            'copy:app',
+            'jshint',
+            'usemin'
+        );
+    });
 
-            runSequence(
-                'styles',
-				'generate-templates',
-                'inject-js',
-                'copy:all'
-            );
+    /**
+     * Task: 'gulp test'
+     * Run test once and exit
+     */
+    gulp.task('test', function(done) {
+        new Server({
+            configFile: __dirname + '/karma.conf.js',
+            singleRun: true
+        }, done).start();
+    });
+
+    /**
+     * Task: 'gulp tdd'
+     * Watch for file changes and re-run tests on each change
+     */
+    gulp.task('tdd', function(done) {
+        new Server({
+            configFile: __dirname + '/karma.conf.js'
+        }, done).start();
     });
 
 })();

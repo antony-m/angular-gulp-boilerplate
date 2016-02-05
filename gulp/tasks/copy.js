@@ -6,11 +6,6 @@
      */
     var gulp = require('gulp');
     var config = require('../config.js');
-    var $ = {};
-
-    /**
-     * Plugins
-     */
 
     /**
      * Copy files from app to www for production
@@ -18,39 +13,40 @@
     gulp.task('copy:app', function() {
         // First level
         gulp.src([
-                'app/*.*',
-                '!app/styles'
+                'src/*.*',
+                '!src/assets'
             ])
             .pipe(gulp.dest('www'));
 
         gulp.src([
-                'app/**/*',
-                '!app/styles/**'
+                'src/assets/**/*',
+                '!src/assets/styles/**',
+                '!src/assets/scripts/**'
             ])
-            .pipe(gulp.dest('www/styles'));
+            .pipe(gulp.dest('www/assets'));
     });
 
     gulp.task('copy:all', function() {
-        // First level
+
         gulp.src([
-            'app/*.*'
+            'src/*.*'
         ])
             .pipe(gulp.dest('www'));
 
         gulp.src([
-            'app/styles/**'
+            'src/assets/**'
         ])
-            .pipe(gulp.dest('www/styles'));
+            .pipe(gulp.dest('www/assets'));
 
         gulp.src([
-            'app/vendors/**'
+            'src/vendors/**'
         ])
             .pipe(gulp.dest('www/vendors'));
 
         gulp.src([
-            'app/**'
+            'src/app/**'
         ])
-            .pipe(gulp.dest('www'));
+            .pipe(gulp.dest('www/app'));
     });
 
 })();

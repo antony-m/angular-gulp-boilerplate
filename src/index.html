@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="favicon.ico">
+
+    <!-- build:css /assets/styles/css/app.min.css -->
+    <link rel="stylesheet" href="assets/styles/css/app.css">
+    <link rel="stylesheet" href="assets/styles/css/bootstrap.min.css">
+    <!-- endbuild -->
+
+    </head>
+<body>
+
+<!-- build:jsVendors /assets/scripts/vendors.min.js -->
+<script src="/vendors/angular/angular.js"></script>
+<script src="/vendors/angular-mocks/angular-mocks.js"></script>
+<script src="/vendors/ui-router/release/angular-ui-router.js"></script>
+
+<!-- endbuild -->
+
+<!-- build:jsApp /assets/scripts/app.min.js -->
+
+<!-- inject:js -->
+
+
+
+
+<script src="/app/app.js"></script>
+
+
+
+
+<script src="/app/about/about.controller.js"></script>
+
+
+
+
+<script src="/app/contact/contact.controller.js"></script>
+
+
+
+
+<script src="/app/home/home.controller.js"></script>
+
+
+
+
+<script src="/app/states.js"></script>
+
+
+
+
+<script src="/app/templates.js"></script>
+
+
+
+
+<!-- endinject -->
+
+<!-- endbuild -->
+
+
+<div class="container">
+    <nav class="navbar" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="home">Home</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a ui-sref="contact">Contact</a></li>
+            <li><a ui-sref="about">About</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div ui-view></div>
+
+</body>
+</html>
+

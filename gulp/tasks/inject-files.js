@@ -19,15 +19,15 @@
      */
     gulp.task('inject-js', function() {
 
-        gulp.src('dev/index.html')
+        gulp.src('src/index.html')
             .pipe(
                 $.inject(gulp.src(config.paths.scripts.src[0])
                             .pipe($.order(config.injectOrder.js)), {
-                        'ignorePath': 'dev',
+                        'ignorePath': 'src',
                         'read': false,
                         'relative': false
                     }))
-            .pipe(gulp.dest('dev/'));
+            .pipe(gulp.dest('src/'));
     });
 
 })();

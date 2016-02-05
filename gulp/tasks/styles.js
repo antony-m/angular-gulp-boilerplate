@@ -37,7 +37,7 @@
 
             }))
             .pipe($.autoprefixer({
-                browsers: config.browsers
+                browsers: ['last 2 versions']
             }))
             .pipe($.minifyCss())
             .pipe($.sourcemaps.write())
